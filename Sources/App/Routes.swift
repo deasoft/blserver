@@ -20,6 +20,16 @@ extension Droplet {
 
         get("description") { req in return req.description }
         
+        group("api") { api in
+            //Adding a sub slug to our URL and redirecting all requests to the CarController we just built.
+            api.resource("cars", CarController())
+        }
+        
         try resource("posts", PostController.self)
+        
+        try resource("user", UserController.self)
+        
+        try resource("dir", DirectoryController.self)
+
     }
 }
